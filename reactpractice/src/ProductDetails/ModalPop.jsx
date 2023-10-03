@@ -160,6 +160,7 @@ const ModalPop = () => {
               )}
               <div className="row my-2">
                 <button onClick={handleSaveImage}>Save Image</button>
+                <button className="my-2"> ADD TO CHART</button>
               </div>
             </div>
           </div>
