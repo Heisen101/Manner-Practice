@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import headerImage1 from "../assets/header5.webp";
 import "./Card.css";
 import ImagesSection from "./ImageSection";
 import Quantity from "./Quantity";
