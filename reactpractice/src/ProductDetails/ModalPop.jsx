@@ -159,8 +159,16 @@ const ModalPop = () => {
                 </p>
               )}
               <div className="row my-2">
-                <button onClick={handleSaveImage}>Save Image</button>
-                <button className="my-2"> ADD TO CHART</button>
+                <button
+                  onClick={handleSaveImage}
+                  className="shadow btn custom-btn w-100"
+                >
+                  Save Image
+                </button>
+                <button className="my-2 shadow btn custom-btn w-100">
+                  {" "}
+                  ADD TO CHART
+                </button>
               </div>
             </div>
           </div>
