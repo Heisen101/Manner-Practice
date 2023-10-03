@@ -3,6 +3,59 @@ import React, { useEffect, useState } from "react";
 import "./ModalPop.css";
 
 import image2 from "../assets/bracelet1.jpg";
+const SymbolChoices = ({ handleSymbolClick }) => {
+  const symbols = [
+    "♥",
+    "★",
+    "⚝",
+    "☯",
+    "☮",
+    "✿",
+    "♦",
+    "♣",
+    "♠",
+    "⚘",
+    "✾",
+    "❀",
+    "☑️",
+    "❤️",
+    "☄️",
+    "⚡",
+    "⭐",
+    "☽",
+    "☼",
+    "⛅",
+    "☄",
+    "☃",
+    "☈",
+    "☎️",
+    "✉️",
+    "✏️",
+    "✂️",
+    "❗",
+    "❓",
+    "❕",
+    "❔",
+  ];
+
+  return (
+    <div className="symbol-choices ">
+      <p>Symbol Choices:</p>
+      <div className="symbol-buttons col-10">
+        {symbols.map((symbol, index) => (
+          <button
+            key={index}
+            className="symbol-button mx-1"
+            onClick={() => handleSymbolClick(symbol)}
+          >
+            {symbol}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const ModalPop = () => {
   useEffect(() => {
     const ebModal = document.getElementById("mySizeChartModal");
@@ -39,9 +92,10 @@ const ModalPop = () => {
       window.removeEventListener("click", handleOutsideClick);
     };
   }, []);
+
+  // States  and useEffects
   const [selectedFont, setSelectedFont] = useState("");
   const [userInput, setUserInput] = useState("");
-
   const handleFontClick = (font) => {
     setSelectedFont(font);
   };
@@ -68,6 +122,10 @@ const ModalPop = () => {
       document.body.removeChild(link);
     });
   }
+
+  const handleSymbolClick = (symbol) => {
+    setUserInput((prevUserInput) => prevUserInput + symbol);
+  };
   return (
     <div>
       <button className="btn btn-secondary" id="mySizeChart">
@@ -141,10 +199,21 @@ const ModalPop = () => {
                   </button>
                 </div>
               </div>
+              {/* <SymbolChoices handleSymbolClick={handleSymbolClick} /> */}
+              <SymbolChoices handleSymbolClick={handleSymbolClick} />
+
               <textarea
                 placeholder="Enter your text here"
                 value={userInput}
-                onChange={(e) => setUserInput(e.target.value)}
+                onChange={(e) => {
+                  const inputValue = e.target.value;
+                  const totalCharacters = inputValue.length;
+
+                  
+                  if (totalCharacters <= maxCharacterLimit) {
+                    setUserInput(inputValue);
+                  }
+                }}
                 maxLength={maxCharacterLimit}
                 style={{
                   maxHeight: "32px",
@@ -155,7 +224,7 @@ const ModalPop = () => {
               />
               {userInput.length >= maxCharacterLimit && (
                 <p style={{ color: "grey" }}>
-                  You have reached the maximum number of characters.{" "}
+                  You have reached the maximum number of characters.
                 </p>
               )}
               <div className="row my-2">
