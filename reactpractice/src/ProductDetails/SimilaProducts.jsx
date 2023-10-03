@@ -1,5 +1,5 @@
 import React from "react";
-import SimilarProducts from "./SimilarProducts.css";
+import "./SimilarProducts";
 import image1 from "../assets/header5.webp";
 import image2 from "../assets/header4.webp";
 const ProductCard = ({ imgSrc, alt }) => (

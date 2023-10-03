@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import headerImage1 from "../assets/header5.webp";
-import CardStyle from "./Card.css";
+
+import "./Card.css";
 import ImagesSection from "./ImageSection";
 import Quantity from "./Quantity";
 import Accordion from "./Acordion";
 import ProductContainer from "./SimilaProducts.jsx";
 
+import ModalPop from "./ModalPop.jsx";
 const CardProduct = () => {
   const [selectedColor, setSelectedColor] = useState("");
 
@@ -67,6 +68,12 @@ const CardProduct = () => {
                     </button>
                   </div>
                 </div>
+                <div className="row">
+                  <div className="block  btn  w-100">
+                    <ModalPop />
+                  </div>
+                </div>
+
                 <div className="row my-4 p-class">
                   <p>
                     {" "}
